@@ -66,7 +66,7 @@ jobs:
         run: node .github/scripts/dependency-report.js '${{ matrix.directory }}'
       - name: Save dependency reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dependencies-${{ matrix.name }}
           path: dependency-reports/
