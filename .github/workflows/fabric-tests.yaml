@@ -17,7 +17,7 @@ jobs:
       benchmark: ${{ steps.benchmarks-filter.outputs.changes }}
       cc-env: ${{ steps.cc-env-filter.outputs.changes }}
     steps:
-    - uses: dorny/paths-filter@v3.0.2
+    - uses: dorny/paths-filter@v4.0.3
       name: Check for changes in benchmarks
       id: benchmarks-filter
       with:
@@ -50,7 +50,7 @@ jobs:
             - 'networks/fabric/**'
             - 'networks/prometheus-grafana/**'
             - '.github/**'
-    - uses: dorny/paths-filter@v3.0.2
+    - uses: dorny/paths-filter@v4.0.3
       name: Check for changes in chaincode environments
       id: cc-env-filter
       with:
