@@ -1,0 +1,28 @@
+{
+  "caliper": {
+    "blockchain": "./tools/caliper/besu-connector.js",
+    "command": {
+      "start": "",
+      "end": ""
+    }
+  },
+  "ethereum": {
+    "url": "<BESU_RPC_URL>",
+    "allowHttpRpc": true,
+    "contractDeployerAddress": "0x<DEPLOYER_ADDRESS>",
+    "contractDeployerAddressPrivateKey": "<REDACTED_PRIVATE_KEY>",
+    "fromAddressSeed": "<REDACTED_SEED>",
+    "transactionConfirmationBlocks": 2,
+    "contracts": {
+      "MyERC5185": {
+        "address": "0x<CONTRACT_ADDRESS>",
+        "gas": {
+          "safeMint": 500000,
+          "updateTokenURI": 200000,
+          "batchUpdateTokenURIs": 1000000
+        },
+        "abi": []
+      }
+    }
+  }
+}

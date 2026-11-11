@@ -147,3 +147,52 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Caliper and local blockchain files
+# Git Ignore file
+.idea/
+launch.json
+
+# No logs
+*.log
+/log
+
+# No html
+*.html
+
+# No mac files
+.DS_Store
+
+# Limited npm runtime artifacts
+node_modules/
+package-lock.json
+# until an npm project skeleton is not provided for the repo, we should ignore the user-generated root package.json
+/package.json
+
+**/__pycache__/**
+
+pkg
+bin
+.vscode
+# Ignore local blockchain keys, node data, and environment secrets
+networks/**/keys/
+networks/**/data/
+networks/**/grafana_db/
+networks/**/grafana/provisioning/datasources/datasource.yml
+*.db
+*.sqlite
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+# Ignore network config files that contain secrets; allow example templates
+networks/**/networkconfig*.json
+!networks/**/networkconfig.example.json
+!networks/**/networkconfig.template.json
+# Ignore other local copies
+**/networkconfig copy*.json
+
+# Local benchmark outputs and dependency backups
+/middleware_metrics.txt
+/package-lock.back.json

@@ -1,0 +1,121 @@
+test:
+  name: conventional-erc721-nine-patterns
+  description: Conventional ERC721 CRUD concurrency test for all 9 operation combinations
+
+  workers:
+    number: 1
+
+  rounds:
+    # - label: "01. Create vs Create"
+    #   description: Concurrent Create requests targeting the same uncreated Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case01.js
+    #     arguments: {}
+    #   sleepAfterRound: 5
+
+    # - label: "02. Create vs Update"
+    #   description: Concurrent Create and Update requests targeting the same uncreated Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case02.js
+    #     arguments: {}
+    #   sleepAfterRound: 5
+
+    # - label: "03. Create vs Delete"
+    #   description: Concurrent Create and Delete requests targeting the same uncreated Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case03.js
+    #     arguments: {}
+    #   sleepAfterRound: 5
+
+    # - label: "04. Update vs Create"
+    #   description: Concurrent Update and Create requests targeting the same existing Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case04.js
+    #     arguments:
+    #       prepareCount: 100
+    #   sleepAfterRound: 5
+
+    # - label: "05. Update vs Update"
+    #   description: Concurrent Update requests targeting the same existing Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case05.js
+    #     arguments:
+    #       prepareCount: 100
+    #   sleepAfterRound: 5
+
+    # - label: "06. Update vs Delete"
+    #   description: Concurrent Update and Delete requests targeting the same existing Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case06.js
+    #     arguments:
+    #       prepareCount: 100
+    #   sleepAfterRound: 5
+
+    # - label: "07. Delete vs Create"
+    #   description: Concurrent Delete and Create requests targeting the same existing Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case07.js
+    #     arguments:
+    #       prepareCount: 100
+    #   sleepAfterRound: 5
+
+    # - label: "08. Delete vs Update"
+    #   description: Concurrent Delete and Update requests targeting the same existing Token ID
+    #   txNumber: 200
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 10
+    #   workload:
+    #     module: benchmarks/scenario/baseline/nine_nine/case08.js
+    #     arguments:
+    #       prepareCount: 100
+    #   sleepAfterRound: 5
+
+    - label: "09. Delete vs Delete"
+      description: Concurrent Delete requests targeting the same existing Token ID
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/baseline/nine_nine/case09.js
+        arguments:
+          prepareCount: 100
+      sleepAfterRound: 5

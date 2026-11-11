@@ -1,0 +1,176 @@
+simpleArgs: &simple-args
+  # 開始トークンIDを指定します。再実行時は未使用の範囲に変更してください。
+  tokenId: 1440
+test:
+  name: middleware-concurrency-matrix
+  description: >-
+    All nine CRUD concurrency scenarios; Setup rounds prepare existing tokens
+    for cases 04–09.
+  workers:
+    number: 1
+  rounds:
+    - label: 01. Create vs Create
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case01.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 02. Create vs Update
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case02.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 03. Create vs Delete
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: Setup 04
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03-04.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 04. Update vs Create
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case04.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: Setup 05
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03-05.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 05. Update vs Update
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case05.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: Setup 06
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03-06.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 06. Update vs Delete
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case06.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: Setup 07
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03-07.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 07. Delete vs Create
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case07.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: Setup 08
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03-08.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 08. Delete vs Update
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case08.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: Setup 09
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case03-09.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
+    - label: 09. Delete vs Delete
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/middleware/nine_nine/case09.js
+        arguments:
+          <<: *simple-args
+      sleepAfterRound: 5
