@@ -84,7 +84,7 @@ jobs:
     steps:
     - name: Cache node modules
       id: cache-npm
-      uses: actions/cache@v4.2.3
+      uses: actions/cache@v6.1.0
       with:
         path: node_modules
         key: ${{ matrix.node-version }}-npm-cache-${{ env.CALIPER_VERSION }}-${{ env.FABRIC_BIND_SUT }}
@@ -98,7 +98,7 @@ jobs:
         npx caliper --version
     - name: Cache Fabric Samples and Binaries
       id: cache-fabric
-      uses: actions/cache@v4.2.3
+      uses: actions/cache@v6.1.0
       with:
         path: fabric-samples
         key: ${{ runner.os }}-fabric-samples-${{ env.FABRIC_VERSION }}
@@ -140,7 +140,7 @@ jobs:
 #    - uses: gradle/actions/setup-gradle@v4
     - name: Cache node modules
       id: cache-npm
-      uses: actions/cache@v4.2.3
+      uses: actions/cache@v6.1.0
       with:
         path: node_modules
         key: ${{ matrix.node-version }}-npm-cache-${{ env.CALIPER_VERSION }}-${{ env.FABRIC_BIND_SUT }}
@@ -148,7 +148,7 @@ jobs:
           ${{ matrix.node-version }}-npm-cache-
     - name: Cache Fabric Samples and Binaries
       id: cache-fabric
-      uses: actions/cache@v4.2.3
+      uses: actions/cache@v6.1.0
       with:
         path: fabric-samples
         key: ${{ runner.os }}-fabric-samples-${{ env.FABRIC_VERSION }}
