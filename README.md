@@ -24,3 +24,8 @@ mainブランチに含まれるベンチマークは、3つのディレクトリ
 このリポジトリに含まれるベンチマークを実行するには、すべてのファイルの使用を想定している[Hyperledger Caliper](https://github.com/hyperledger/caliper/)をインストールする必要があります。
 
 Hyperledger Besuネットワークでこのリポジトリを使用する詳細については、[Besuネットワーク](/networks/besu/4node/README.md)をご覧ください
+
+
+## CI・依存関係の診断
+
+[Node CI と依存関係の管理](docs/dependency-security.md)を参照してください。

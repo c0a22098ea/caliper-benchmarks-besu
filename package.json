@@ -1,0 +1,23 @@
+{
+  "name": "caliper-benchmarks-besu",
+  "version": "0.7.2-unstable",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hyperledger/caliper-cli": "^0.6.0",
+    "@hyperledger/caliper-ethereum": "^0.6.0",
+    "license-check-and-add": "2.3.6"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=11.5.1"
+  },
+  "dependencies": {
+    "kubo-rpc-client": "^7.1.0",
+    "web3": "^1.3.0"
+  },
+  "private": true,
+  "scripts": {
+    "test": "node --test tools/caliper/besu-connector.test.js",
+    "audit:report": "node .github/scripts/dependency-report.js"
+  }
+}

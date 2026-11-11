@@ -1,0 +1,74 @@
+name: Node CI and dependency audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          check-latest: true
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
+      - name: Check Besu JavaScript syntax
+        run: |
+          find tools/caliper tools/cud-deploy benchmarks/scenario/baseline benchmarks/scenario/middleware -name '*.js' -print0 | xargs -0 -n1 node --check
+
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: benchmarks
+            directory: .
+          - name: deploy
+            directory: tools/cud-deploy
+          - name: api-fixed-asset-node
+            directory: src/fabric/api/fixed-asset/node
+          - name: api-fixed-asset-base-node
+            directory: src/fabric/api/fixed-asset-base/node
+          - name: samples-fabcar-node
+            directory: src/fabric/samples/fabcar/node
+          - name: samples-marbles-node
+            directory: src/fabric/samples/marbles/node
+          - name: samples-marbles-norichquery-node
+            directory: src/fabric/samples/marbles-norichquery/node
+          - name: scenario-simple-node
+            directory: src/fabric/scenario/simple/node
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          check-latest: true
+      - name: Report updates and vulnerabilities
+        run: node .github/scripts/dependency-report.js '${{ matrix.directory }}'
+      - name: Save dependency reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependencies-${{ matrix.name }}
+          path: dependency-reports/
+          if-no-files-found: error
+          retention-days: 30

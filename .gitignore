@@ -165,9 +165,6 @@ launch.json
 
 # Limited npm runtime artifacts
 node_modules/
-package-lock.json
-# until an npm project skeleton is not provided for the repo, we should ignore the user-generated root package.json
-/package.json
 
 **/__pycache__/**
 
@@ -196,3 +193,6 @@ networks/**/networkconfig*.json
 # Local benchmark outputs and dependency backups
 /middleware_metrics.txt
 /package-lock.back.json
+
+# CI dependency diagnostics
+/dependency-reports/
