@@ -3,7 +3,7 @@
   "version": "0.7.2-unstable",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@hyperledger/caliper-cli": "^0.6.0",
+    "@hyperledger/caliper-cli": "^0.7.1",
     "@hyperledger/caliper-ethereum": "^0.6.0",
     "license-check-and-add": "2.3.6"
   },
